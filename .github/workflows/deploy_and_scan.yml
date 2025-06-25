@@ -11,12 +11,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # - name: Set Up SSH
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
-      #     chmod 700 ~/.ssh/id_rsa
-      #     ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+      - name: Set Up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 700 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
         
       - name: Deploy App to EC2
         run: |
